@@ -3,66 +3,223 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RAZEL — Brand Teaser</title>
-  <meta name="description" content="RAZEL: 심플하고 강렬한 브랜드 티저 페이지" />
-  <meta name="theme-color" content="#0b0b0b" />
+  <title>RAZEL — 나이트 캡슐</title>
+  <meta name="description" content="RAZEL: 다음 세대를 위한 브렌드" />
+  <meta name="theme-color" content="#050505" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap">
   <style>
-    :root{ --bg:#000000; --fg:#f5f5f5; --muted:#b5b5b5; --line:#1a1a1a; --max:960px; }
-    *{ box-sizing:border-box }
-    body{ margin:0; background:var(--bg); color:var(--fg); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased; }
-    a{ color:inherit; text-decoration:none }
-    .hero{ min-height:100svh; display:grid; place-items:center; text-align:center; padding:48px 20px; background:radial-gradient(900px 480px at 50% 20%, rgba(255,255,255,.05), transparent 60%); }
-    .wrap{ width:100%; max-width:var(--max); margin:0 auto; }
-    .logo{ width:clamp(200px, 45vw, 560px); height:auto; display:block; margin:0 auto 18px; filter:contrast(1.05) brightness(1.02); }
-    .kicker{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-top:8px; }
-    .title{ font-weight:800; letter-spacing:.01em; margin:6px 0 10px; font-size:clamp(22px, 2.4vw, 28px); }
-    .desc{ color:#d7d7d7; max-width:680px; margin:0 auto 18px; font-size:15px; }
-    .cta{ margin-top:10px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-    .btn{ border:1px solid #2a2a2a; background:#141414; color:#fff; font-weight:700; padding:12px 18px; border-radius:10px; text-transform:uppercase; letter-spacing:.08em; font-size:12px; cursor:pointer; }
-    .btn.primary{ background:#fff; color:#000; border-color:#fff; }
-    .info{ border-top:1px solid var(--line); padding:36px 20px 54px; }
-    .info .wrap{ max-width:720px; }
-    .info h2{ margin:0 0 10px; font-size:18px; letter-spacing:.02em; }
-    .list{ margin:0; padding-left:18px; color:#d9d9d9; }
-    .list li{ margin:6px 0; }
-    footer{ border-top:1px solid var(--line); color:#a9a9a9; font-size:12px; padding:20px; text-align:center; }
-    @media (prefers-reduced-motion: reduce){ *{ transition:none !important; animation:none !important } }
+    :root{
+      --bg:#050505;
+      --fg:#f5f5f5;
+      --muted:#b1b1b1;
+      --accent:#7c3aed;
+      --accent-soft:rgba(124,58,237,0.22);
+      --shell:min(960px, calc(100vw - 40px));
+      --radius:24px;
+      --border:1px solid rgba(255,255,255,0.1);
+    }
+    *{ box-sizing:border-box; }
+    html, body{ margin:0; padding:0; }
+    body{
+      background:linear-gradient(180deg, rgba(124,58,237,0.15) 0%, transparent 35%), var(--bg);
+      color:var(--fg);
+      font-family:"Manrope","Noto Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      position:relative;
+      min-height:100vh;
+    }
+    ::selection{ background:rgba(124,58,237,0.45); color:#fff; }
+    a{ color:inherit; text-decoration:none; }
+    img{ display:block; max-width:100%; border-radius:18px; }
+    h1,h2{
+      font-family:"Space Grotesk","Noto Sans KR",sans-serif;
+      font-weight:600;
+      letter-spacing:-0.01em;
+      margin:0 0 18px;
+    }
+    h1{ font-size:clamp(42px, 8vw, 72px); line-height:1.1; }
+    h2{ font-size:clamp(24px, 4vw, 32px); }
+    p{ margin:0 0 18px; color:var(--muted); }
+    .noise{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.45;
+      mix-blend-mode:screen;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      z-index:-1;
+    }
+    .shell{ width:var(--shell); margin:0 auto; }
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 0 100px;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:auto auto -140px 50%;
+      width:360px;
+      height:360px;
+      transform:translateX(-50%);
+      background:radial-gradient(circle, rgba(124,58,237,0.22), transparent 60%);
+      filter:blur(12px);
+      opacity:.8;
+      z-index:-1;
+    }
+    .hero-logo{
+      display:inline-flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+      margin-bottom:32px;
+    }
+    .hero-logo img{
+      width:180px;
+      height:auto;
+      filter:drop-shadow(0 12px 22px rgba(0,0,0,0.5));
+    }
+    .hero-sub{
+      font-size:12px;
+      letter-spacing:0.34em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+    .cta{
+      margin-top:36px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 26px;
+      border-radius:999px;
+      border:var(--border);
+      letter-spacing:0.24em;
+      text-transform:uppercase;
+      font-size:12px;
+      font-weight:600;
+      background:rgba(255,255,255,0.04);
+      color:#fff;
+      transition:transform .4s ease, box-shadow .4s ease, background .4s ease;
+    }
+    .btn.primary{
+      background:linear-gradient(135deg, rgba(124,58,237,0.9), rgba(37,99,235,0.9));
+      border-color:rgba(255,255,255,0.4);
+      box-shadow:0 16px 40px rgba(17,24,39,0.55);
+    }
+    .btn:hover, .btn:focus-visible{
+      transform:translateY(-3px);
+      box-shadow:0 20px 50px rgba(5,5,5,0.7);
+    }
+    .gallery{
+      padding:40px 0 120px;
+    }
+    .gallery-grid{
+      display:grid;
+      gap:22px;
+      grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+    }
+    .card{
+      border-radius:var(--radius);
+      border:var(--border);
+      background:rgba(255,255,255,0.03);
+      padding:22px;
+      display:grid;
+      gap:18px;
+      align-content:start;
+    }
+    .card figure{ margin:0; position:relative; }
+    .card figcaption{
+      position:absolute;
+      inset:auto 16px 16px;
+      font-size:11px;
+      letter-spacing:0.28em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.8);
+    }
+    .card h2{ margin:0; font-size:20px; color:#fff; }
+    footer{
+      border-top:var(--border);
+      padding:40px 0 70px;
+      text-align:center;
+      font-size:12px;
+      letter-spacing:0.28em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    @media (max-width:520px){
+      .hero{ padding:100px 0 80px; }
+      .cta{ flex-direction:column; }
+      .btn{ width:100%; }
+    }
   </style>
 </head>
 <body>
-  <!-- HERO -->
-  <header class="hero" id="home" role="banner">
-    <div class="wrap">
-      <!-- 여기만 jpeg로 경로 변경 -->
-      <img class="logo" src="/RAZEL.png" alt="RAZEL 로고" decoding="async" loading="eager">
-      <p class="kicker">The Next Gen Brand</p>
-      <h1 class="title">심플하고 강렬한 존재감</h1>
-      <p class="desc">복잡함을 덜어내고 필요한 메시지만 남겼습니다. 곧 공개될 드롭과 룩북을 이 페이지에서 확인하세요.</p>
-      <div class="cta">
-        <a class="btn primary" href="#info">자세히 보기</a>
-        <a class="btn" href="#contact">문의</a>
+  <div class="noise" aria-hidden="true"></div>
+  <main>
+    <section class="hero" id="home">
+      <div class="shell">
+        <div class="hero-logo">
+          <img src="razel-white.png" alt="RAZEL 로고" width="180" height="52" loading="eager" decoding="async">
+          <span class="hero-sub">나이트 캡슐 2025</span>
+        </div>
+        <h1>다음 세대를 위한 브렌드.</h1>
+        <p>RAZEL은 심플함과 고급스러움 그 중간에서 다른 브렌드와는 다른 매력을 선사합니다.</p>
+        <div class="cta">
+          <a class="btn primary" href="#look">룩북 보기</a>
+          <a class="btn" href="https://forms.gle/p3ggJYh9byphUJJA6" target="_blank" rel="noopener">문의 폼</a>
+        </div>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <!-- INFO -->
-  <section class="info" id="info" aria-label="브랜드 정보">
-    <div class="wrap">
-      <h2>About RAZEL</h2>
-      <ul class="list">
-        <li>모노크롬 기반의 간결한 무드</li>
-        <li>런칭 전까지 최소 정보만 제공하는 티저 전략</li>
-        <li>심플한 디자인 속 강력한 디자인</li>
-      </ul>
-    </div>
-  </section>
+    <section class="gallery" id="look">
+      <div class="shell">
+        <div class="gallery-grid">
+          <article class="card">
+            <figure>
+              <img src="razel-hoodie-black.jpg" alt="옵시디언 룩">
+              <figcaption>옵시디언</figcaption>
+            </figure>
+            <h2>옵시디언 후디</h2>
+            <p>무광 블랙 위에 눌어붙는 바인딩 라인. 서울의 심야 공기를 머금은 시그니처 룩.</p>
+          </article>
+          <article class="card">
+            <figure>
+              <img src="razel-hoodie-blue.jpg" alt="네온 미스트 룩">
+              <figcaption>네온 미스트</figcaption>
+            </figure>
+            <h2>네온 미스트 후디</h2>
+            <p>미세하게 비치는 블루 글로우와 리플렉티브 디테일. 새벽 이전의 푸른 떨림.</p>
+          </article>
+          <article class="card">
+            <figure>
+              <img src="razel-hoodie-white.jpg" alt="루나 베일 룩">
+              <figcaption>루나 베일</figcaption>
+            </figure>
+            <h2>루나 베일 후디</h2>
+            <p>소프트 화이트 텍스처에 달빛같은 펄을 더해 밤 속에서도 잔잔하게 부각됩니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- FOOTER -->
-  <footer id="contact" role="contentinfo">
-    <div class="wrap">
-      <div>문의: <a href="mailto:hello@razel.example">hello@razel.example</a></div>
-      <div style="margin-top:6px;">© 2025 RAZEL</div>
-    </div>
+  <footer id="contact">
+    <div class="shell">© 2025 RAZEL — 문의: Instagram @razel_brand</div>
   </footer>
 </body>
 </html>
